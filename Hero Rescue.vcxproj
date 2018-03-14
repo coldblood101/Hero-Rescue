@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{88076DA6-AC67-478A-A245-78F1FFBDD137}</ProjectGuid>
+    <RootNamespace>HeroRescue</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2\include;C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2_image-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2_image-2.0.1\lib\x86;C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2\include;C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2_image-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2_image-2.0.1\lib\x86;C:\Users\My Laptop\Desktop\Hero Rescue remake\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="pic\boss\boss.png" />
+    <Image Include="pic\boss\boss10.png" />
+    <Image Include="pic\boss\boss11.png" />
+    <Image Include="pic\boss\boss12.png" />
+    <Image Include="pic\boss\boss13.png" />
+    <Image Include="pic\boss\boss14.png" />
+    <Image Include="pic\boss\boss2.png" />
+    <Image Include="pic\boss\boss3.png" />
+    <Image Include="pic\boss\boss4.png" />
+    <Image Include="pic\boss\boss5.png" />
+    <Image Include="pic\boss\boss6.png" />
+    <Image Include="pic\boss\boss7.png" />
+    <Image Include="pic\boss\boss8.png" />
+    <Image Include="pic\boss\boss9.png" />
+    <Image Include="pic\bullet\boom.png" />
+    <Image Include="pic\bullet\bullet1.png" />
+    <Image Include="pic\bullet\bullet10.png" />
+    <Image Include="pic\bullet\bullet11.png" />
+    <Image Include="pic\bullet\bullet12.png" />
+    <Image Include="pic\bullet\bullet13.png" />
+    <Image Include="pic\bullet\bullet14.png" />
+    <Image Include="pic\bullet\bullet2.png" />
+    <Image Include="pic\bullet\bullet3.png" />
+    <Image Include="pic\bullet\bullet4.png" />
+    <Image Include="pic\bullet\bullet5.png" />
+    <Image Include="pic\bullet\bullet6.png" />
+    <Image Include="pic\bullet\bullet7.png" />
+    <Image Include="pic\bullet\bullet8.png" />
+    <Image Include="pic\bullet\bullet9.png" />
+    <Image Include="pic\character\character.png" />
+    <Image Include="pic\gun\gun1.png" />
+    <Image Include="pic\gun\gun10.png" />
+    <Image Include="pic\gun\gun11.png" />
+    <Image Include="pic\gun\gun12.png" />
+    <Image Include="pic\gun\gun13.png" />
+    <Image Include="pic\gun\gun14.png" />
+    <Image Include="pic\gun\gun2.png" />
+    <Image Include="pic\gun\gun3.png" />
+    <Image Include="pic\gun\gun4.png" />
+    <Image Include="pic\gun\gun5.png" />
+    <Image Include="pic\gun\gun6.png" />
+    <Image Include="pic\gun\gun7.png" />
+    <Image Include="pic\gun\gun8.png" />
+    <Image Include="pic\gun\gun9.png" />
+    <Image Include="pic\map\map1.png" />
+    <Image Include="pic\map\map2.png" />
+    <Image Include="pic\map\map3.png" />
+    <Image Include="pic\monster\monster.png" />
+    <Image Include="pic\monster\monster1.png" />
+    <Image Include="pic\monster\monster2.png" />
+    <Image Include="pic\monster\monster3.png" />
+    <Image Include="pic\monster\monster4.png" />
+    <Image Include="pic\monster\monster5.png" />
+    <Image Include="pic\monster\monster6.png" />
+    <Image Include="pic\monster\monster7.png" />
+    <Image Include="pic\monster\monster8.png" />
+    <Image Include="pic\necessary\emtyHeart.png" />
+    <Image Include="pic\necessary\ghost.png" />
+    <Image Include="pic\necessary\heart.png" />
+    <Image Include="pic\pet\pet.png" />
+    <Image Include="pic\pet\pet2.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

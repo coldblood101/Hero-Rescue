@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="pic\boss\boss.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\boom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\bullet\bullet14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\character\character.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\gun\gun14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\map\map1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\map\map2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\map\map3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\necessary\emtyHeart.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\necessary\ghost.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\necessary\heart.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\pet\pet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\pet\pet2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\boss\boss14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pic\monster\monster8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
