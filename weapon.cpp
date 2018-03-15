@@ -1,7 +1,7 @@
 #include "weapon.h"
 #include <cmath>
 using namespace std;
-bullet* Fire[50];
+bullet* Fire[20];
 
 weapon::weapon(int gunNum)
 {
@@ -71,11 +71,11 @@ weapon::weapon(int gunNum)
 	desRect.x = Player::playerPosX + 30;
 	desRect.y = Player::playerPosY + 30;
 	desRect.w = 30;
-	desRect.h = round((30.0*gunHeight) / gunWidth);
+	desRect.h = (int)round((30.0*gunHeight) / gunWidth);
 
 	//Set the gun rotate point 
 	rotate.x = 10;
-	rotate.y = round((30.0*gunHeight) / gunWidth)/2 ;
+	rotate.y = (int)round((30.0*gunHeight) / gunWidth)/2 ;
 }
 
 
@@ -85,16 +85,23 @@ weapon::~weapon()
 
 void weapon::Update(int gunType)
 {
-	for(int i=0;i<50;i++)
-		if(Fire[i]!=nullptr)
+	for (int i = 0; i < 20; i++) {
+		if (Fire[i] != nullptr) {
 			Fire[i]->Update();
+			if (!Fire[i]->distance()) {
+				Fire[i] = nullptr;
+				Game::Xbullet[i] = 0;
+				Game::Ybullet[i] = 0;
+			}
+		}
+	}
 	gunKind = gunType;
 	desRect.x = Player::playerPosX + 30;
 	
 }
 void weapon::Draw()
 {
-	for (int i = 0; i<50; i++)
+	for (int i = 0; i<20; i++)
 		if (Fire[i] != nullptr)
 			Fire[i]->Draw();
 	switch (gunKind) {
@@ -151,12 +158,15 @@ void weapon::handleEvent()
 		if (Game::e.key.keysym.sym == SDLK_SPACE&&!hit)
 		{
 			hit = true;
+			if (bulletNum == 19)
+				bulletNum = 0;
 			if (Fire[bulletNum] != nullptr)
 				Fire[bulletNum] = nullptr;
-			Fire[bulletNum] = new bullet(angle, gunKind);
+			Fire[bulletNum] = new bullet(angle, gunKind,bulletNum);
+			Game::Xbullet[bulletNum] = Player::Xpos;
+			Game::Ybullet[bulletNum] = Player::Ypos;
 			bulletNum++;
-			if (bulletNum == 49)
-				bulletNum = 0;
+			
 		}
 		break;
 	case SDL_KEYUP:
