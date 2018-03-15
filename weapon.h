@@ -2,6 +2,8 @@
 #include"TextureManager.h"
 #include"Game.h"
 #include"bullet.h"	
+#include"Player.h"
+
 
 class weapon
 {
