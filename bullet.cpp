@@ -17,8 +17,10 @@ SDL_Texture* bullet:: bullet13;
 SDL_Texture* bullet:: bullet14;
 SDL_Texture* bullet::bullet15;
 
-bullet::bullet(double angle,int bulletKind)
+bullet::bullet(double angle,int bulletKind,int i)
 {
+	//the number of the bullet int he array 
+	pos = i;
 	//classify the bullet kind for each gun
 	bulletType = bulletKind;
 	bulletSpeed = 7;
@@ -90,7 +92,7 @@ bullet::bullet(double angle,int bulletKind)
 	}
 
 	desRect.w = 20;
-	desRect.h = round((20.0*bulletHeight) / bulletWidth);
+	desRect.h = (int )round((20.0*bulletHeight) / bulletWidth);
 	//bullet start pos
 	Xpos = Player::playerPosX + 30;
 	desRect.x = Xpos;
@@ -164,42 +166,47 @@ void bullet::Update()
 		{
 			Yvelocity = bulletSpeed;
 			Xvelocity = 0;
-			Xvelocity = round(Xvelocity);
-			Yvelocity = round(Yvelocity);
-			Ypos -= Yvelocity;
+			Xvelocity = (int)round(Xvelocity);
+			Yvelocity = (int)round(Yvelocity);
+			Ypos -= (int)Yvelocity;
+			Game::Ybullet[pos] -= Yvelocity;
 
 		}
 		else if (bulletAngle == 90)
 		{
 			Xvelocity = bulletSpeed;
 			Yvelocity = 0;
-			Xvelocity = round(Xvelocity);
-			Yvelocity = round(Yvelocity);
-			Xpos += Xvelocity;
+			Xvelocity = (int)round(Xvelocity);
+			Yvelocity = (int)round(Yvelocity);
+			Xpos += (int)Xvelocity;
+			Game::Xbullet[pos] += Xvelocity;
 		}
 		else if (bulletAngle == 180)
 		{
 			Xvelocity = 0;
 			Yvelocity = bulletSpeed;
-			Xvelocity = round(Xvelocity);
-			Yvelocity = round(Yvelocity);
-			Ypos += Yvelocity;
+			Xvelocity = (int)round(Xvelocity);
+			Yvelocity = (int)round(Yvelocity);
+			Ypos += (int)Yvelocity;
+			Game::Ybullet[pos] += Yvelocity;
 		}
 		else if (bulletAngle == 270)
 		{
 			Xvelocity = bulletSpeed;
 			Yvelocity = 0;
-			Xvelocity = round(Xvelocity);
-			Yvelocity = round(Yvelocity);
-			Xpos -= Xvelocity;
+			Xvelocity = (int)round(Xvelocity);
+			Yvelocity = (int)round(Yvelocity);
+			Xpos -= (int)Xvelocity;
+			Game::Xbullet[pos] -= Xvelocity;
 		}
 		else if (bulletAngle == 360)
 		{
 			Xvelocity =0;
 			Yvelocity = bulletSpeed;
-			Xvelocity = round(Xvelocity);
-			Yvelocity = round(Yvelocity);
-			Ypos -= Xvelocity;
+			Xvelocity = (int)round(Xvelocity);
+			Yvelocity = (int)round(Yvelocity);
+			Ypos -= (int)Yvelocity;
+			Game::Ybullet[pos] -= Yvelocity;
 		}
 	desRect.x = Xpos;
 	desRect.y = Ypos;
@@ -207,6 +214,6 @@ void bullet::Update()
 bool bullet::distance()
 {
 	//700 is the map width and height 
-	return (Xpos >= 0 && Xpos <= 700 && Ypos >= 0 && Ypos <= 700);
+return (Xpos >= 0 && Xpos <= 700 && Ypos >= 0 && Ypos <= 700);
 
 }
