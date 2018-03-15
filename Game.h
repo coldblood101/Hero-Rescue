@@ -25,7 +25,8 @@ public:
 	void handleEvent();
 	static SDL_Event e;
 	static SDL_Renderer* renderer;
-	
+	static int Xbullet[20];
+	static int Ybullet[20];
 	
 	
 private:
