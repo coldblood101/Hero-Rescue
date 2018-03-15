@@ -5,13 +5,20 @@
 class bullet
 {
 public:
-	bullet(double angle ,int bulletKind);
+	bullet(double angle ,int bulletKind,int i);
 	~bullet();
 	void Draw();
 	void Update();
 	bool distance();
-private:
 
+	//bullet pos 
+	int Xpos, Ypos;
+	//bullet angle 
+	double bulletAngle = 135;
+
+private:
+	//bullet pos
+	int pos;
 	//bullet Texture 
 	static SDL_Texture* bullet1;
 	static SDL_Texture* bullet2;
@@ -28,8 +35,7 @@ private:
 	static SDL_Texture* bullet13;
 	static SDL_Texture* bullet14;
 	static SDL_Texture* bullet15;
-	//bullet angle 
-	double bulletAngle=135;
+	
 	//bullet velocity and speed 
 	double Xvelocity, Yvelocity;
 	int bulletSpeed;
@@ -39,7 +45,6 @@ private:
 	//bulletRectc
 	SDL_Rect desRect;
 	SDL_Point rotate;
-	//bullet pos 
-	int Xpos, Ypos;
+	
 };
 
