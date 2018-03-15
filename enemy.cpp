@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 enemy::enemy(int X,int Y)
 {
 	//the necessary information of the picture 
@@ -21,7 +20,7 @@ enemy::enemy(int X,int Y)
 	//set the monster life and runSpeed
 	heart = monsterType + 1;
 	fullHeart = heart;
-	runSpeed = 2;
+	runSpeed = 3;
 	bulletNum = rand()%5+1;
 	//convernt from string to const char*
 	texture = TextureManager::LoadTexture(monsterLink.c_str());
@@ -46,6 +45,7 @@ enemy::enemy(int X,int Y)
 	scrRect.h = monsterHeight;
 	//heart w& h
 	heartRect.w = heartRect.h = 10;
+
 }
 
 
@@ -55,45 +55,55 @@ enemy::~enemy()
 
 void enemy:: Draw()
 {
-	if(heart>0)
-	SDL_RenderCopy(Game::renderer, texture, &scrRect, &desRect);
-	for (int i = 0; i < heart; i++)
-	{
-		heartRect.y = Ypos - 20-Map::Ymap;
-		heartRect.x = i * 10 + Xpos-Map::Xmap;
-		SDL_RenderCopy(Game::renderer, heartT, NULL, &heartRect);
-	}
-	for (int i = heart; i < fullHeart; i++)
-	{
-		heartRect.y = Ypos-Map::Ymap - 20;
-		heartRect.x =Xpos-Map::Xmap + i * 10;
-		SDL_RenderCopy(Game::renderer, emtyHeart, NULL, &heartRect);
+	if (heart > 0){
+		//draw the monster
+		SDL_RenderCopy(Game::renderer, texture, &scrRect, &desRect);
+		//draw the heart remain of the monster 
+		for (int i = 0; i < heart; i++)
+		{
+			heartRect.y = Ypos - 20 - Map::Ymap;
+			heartRect.x = i * 10 + Xpos - Map::Xmap;
+			SDL_RenderCopy(Game::renderer, heartT, NULL, &heartRect);
+		}
+		//draw the heart has lost of the monster 
+		for (int i = heart; i < fullHeart; i++)
+		{
+			heartRect.y = Ypos - Map::Ymap - 20;
+			heartRect.x = Xpos - Map::Xmap + i * 10;
+			SDL_RenderCopy(Game::renderer, emtyHeart, NULL, &heartRect);
+		}
 	}
 }
 void enemy::Update()
 {
+	//the position of the monster
 	desRect.x = Xpos;
 	desRect.y = Ypos;
+	//the delay time betwen each frame when move
 	frameDelay++;
+
 	if (frameDelay == 15)
 	{
 		frameDelay = 0;
+		//reset the first point of the animation
 		if (scrRect.x + monsterWidth >= ((monsterType % 4)*frameWidth + 3 * monsterWidth))
 			scrRect.x = (monsterType % 4)*frameWidth;
-		else
+		else//move to the next frame 
 			scrRect.x += monsterWidth;
 	}
+
 	scrRect.y = (monsterType / col)*frameHeight + dir*monsterHeight;
-	if (sqrt((Xpos - Player::Xpos)*(Xpos - Player::Xpos) + (Ypos  - Player::Ypos)*(Ypos  - Player::Ypos)) > 600)
+	if (sqrt((Xpos - Player::Xpos)*(Xpos - Player::Xpos) + (Ypos - Player::Ypos)*(Ypos - Player::Ypos)) > 1000)
 	{
+		//the thing the monster do when didn't see the player 
 	}
 	else
 	{
-
-		rate = (double)runSpeed / (sqrt((Xpos - Player::Xpos+20)*(Xpos - Player::Xpos + 20) + (Ypos - Player::Ypos + 20)*(Ypos  - Player::Ypos + 20)));
+		//chase the player 
+		rate = (double)runSpeed / (sqrt((Xpos - Player::Xpos+10)*(Xpos - Player::Xpos + 10) + (Ypos - Player::Ypos + 10)*(Ypos  - Player::Ypos + 10)));
 		Xvelocity = (int)ceil(rate*(Xpos - Player::Xpos));
 		Yvelocity = (int)ceil(rate*(Ypos - Player::Ypos));
-
+		//the direct of the monster and dir is equal to the col of the animaion in the monster frame 
 		if ((Xvelocity < 0 && Yvelocity < 0) || (Xvelocity < 0 && Yvelocity>0) || (Yvelocity == 0 && Xvelocity < 0))
 			dir = 2;
 		else if ((Xvelocity > 0 && Yvelocity < 0) || (Xvelocity > 0 && Yvelocity > 0) || (Yvelocity == 0 && Xvelocity > 0))
@@ -102,10 +112,13 @@ void enemy::Update()
 			dir = 3;
 		else if (Xvelocity == 0 && Yvelocity < 0)
 			dir = 0;
+		//update the pos of the monster  after each frame when the player is in range 
 		Xpos -= Xvelocity;
 		Ypos -= Yvelocity;
+		//if the monster hasn't damage the player 
 		if (!hit) {
-			if (sqrt((Xpos - Player::Xpos)*(Xpos - Player::Xpos) + (Ypos - Player::Ypos)*(Ypos - Player::Ypos)) <= 10) {
+			if (sqrt((Xpos - Player::Xpos)*(Xpos - Player::Xpos) + (Ypos - Player::Ypos)*(Ypos - Player::Ypos)) <= 15) {
+				//15 is the limit range when the monster will damage the player
 				if (Player::heart > 0) {
 					Player::heart--;
 					hit = true;
@@ -114,7 +127,7 @@ void enemy::Update()
 		}
 		else
 			{
-				hitDelay++;
+				hitDelay++;//the delay time betwen two damage
 				if (hitDelay == 100)
 				{
 					hitDelay = 0;
@@ -123,6 +136,12 @@ void enemy::Update()
 			}
 		
 	}
+	//update the position of the monster 
 	desRect.x = Xpos - Map::Xmap;
 	desRect.y = Ypos - Map::Ymap;
+}
+bool enemy::bulletHit(int X, int Y)
+{
+	return (sqrt((Xpos - X)*(Xpos - X) + (Ypos - Y)*(Ypos - Y)) <= 15);
+
 }
