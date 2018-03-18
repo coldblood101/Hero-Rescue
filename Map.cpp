@@ -1,5 +1,7 @@
 #include "Map.h"
 #include "TextureManager.h"
+#include<fstream>
+using namespace std;
 //declear the static Variable
 int Map::Xmap;
 int Map::Ymap;
@@ -13,8 +15,14 @@ Map::Map(int mapNum)
 {
 	//set the map name
 	//mapName = mapNum % 3+1;//%3 so it can only be 1,2,3
-	mapName = 1;
-						   
+	mapName = mapNum;
+	ifstream myMap;
+	myMap.open("preData/map1.txt");
+	for (int i = 0; i < 200; i++)
+		for (int j = 0; j < 200; j++)
+			myMap >> map1[i][j];
+	myMap.close();
+
 	//declear the map element 
 	floor=TextureManager::LoadTexture("pic/map/floor.png");
 	wall = TextureManager::LoadTexture("pic/map/wall.png");
@@ -23,14 +31,6 @@ Map::Map(int mapNum)
 	//set  the width and the height of the texture 
 	blockRect.w = 50;
 	blockRect.h = 50;
-	//temporary set the map for testing 
-	for (int i = 0; i < 200; i++)
-		for (int j = 0; j < 200; j++) {	
-			if (i == 0 || i == 199 || j == 0 || j == 199)
-				map1[i][j] = 1;
-			else
-				map1[i][j] = 2;
-		}
 
 }
 

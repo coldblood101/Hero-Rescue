@@ -88,7 +88,7 @@ void weapon::Update(int gunType)
 	for (int i = 0; i < 20; i++) {
 		if (Fire[i] != nullptr) {
 			Fire[i]->Update();
-			if (!Fire[i]->distance()) {
+			if (!Fire[i]->distance()||(Game::Xbullet[i] == 0&& Game::Ybullet[i] == 0)) {
 				Fire[i] = nullptr;
 				Game::Xbullet[i] = 0;
 				Game::Ybullet[i] = 0;

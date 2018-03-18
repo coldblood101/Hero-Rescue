@@ -87,6 +87,9 @@ bullet::bullet(double angle,int bulletKind,int i)
 	case 14:
 		SDL_QueryTexture(bullet14, NULL, NULL, &bulletWidth, &bulletHeight);
 		break;
+	case 15:
+		SDL_QueryTexture(bullet14, NULL, NULL, &bulletWidth, &bulletHeight);
+		break;
 	default:
 		break;
 	}
@@ -96,7 +99,7 @@ bullet::bullet(double angle,int bulletKind,int i)
 	//bullet start pos
 	Xpos = Player::playerPosX + 30;
 	desRect.x = Xpos;
-	Ypos = Player::playerPosY +15;
+	Ypos = Player::playerPosY +10;
 	desRect.y = Ypos;
 	//bullet point rotate 
 	rotate.x = 10;
@@ -153,6 +156,9 @@ void bullet::Draw()
 			break;
 		case 14:
 			SDL_RenderCopyEx(Game::renderer, bullet14, NULL, &desRect, bulletAngle, &rotate, SDL_FLIP_NONE);
+			break;
+		case 15:
+			SDL_RenderCopyEx(Game::renderer, bullet15, NULL, &desRect, bulletAngle, &rotate, SDL_FLIP_NONE);
 			break;
 		default:
 			break;

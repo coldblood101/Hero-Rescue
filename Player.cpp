@@ -82,8 +82,16 @@ Player::Player(int characterNum)
 	heartT = TextureManager::LoadTexture("pic/necessary/heart.png");
 	emtyHeart = TextureManager::LoadTexture("pic/necessary/emtyHeart.png");
 	ghost = TextureManager::LoadTexture("pic/necessary/ghost.png");
-	guntype = 14;
-	//gun modivate 
+	
+	//load the previous information
+	std::ifstream myfile;
+	myfile.open("preData/gun.txt");
+	for (int i = 0; i < 15; i++)
+		myfile >> gunHave[i];
+
+
+	//gun modivate
+	guntype = 1;
 	gun = new weapon(guntype);
 }
 

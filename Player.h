@@ -3,7 +3,7 @@
 #include"Game.h"
 #include<cmath>
 #include "weapon.h"
-
+#include<fstream>
 
 class Player
 {
@@ -18,6 +18,11 @@ public:
 	static const int playerPosY;
 	static int Xpos;
 	static int Ypos;
+	//number of character
+	int character;
+	//gun type
+	int guntype;
+
 private:
 	// player Texture
 	SDL_Texture* texture;
@@ -27,8 +32,7 @@ private:
 	int frameWidth, frameHeight;
 	int playerWidth, playerHeight;
 	SDL_Rect desRect, scrRect;
-	//number of character
-	int character;
+	
 	//character function
 	
 	SDL_Rect heartRect;
@@ -42,6 +46,8 @@ private:
 	int Ipos, Jpos;
 	//necessary thing 
 	SDL_Texture* heartT, *ghost, *emtyHeart;
-	int guntype;
+	int money = 0;
+	int gunHave[15];
+	
 };
 

@@ -3,7 +3,6 @@
 #include "TextureManager.h"
 #include "Map.h"
 #include"Player.h"
-#include"bullet.h"
 
 class enemy
 {
@@ -12,6 +11,9 @@ public:
 	~enemy();
 	void Draw();
 	void Update();
+	int heart;
+	bool bulletHit(int X, int Y);
+
 private:
 	//enemy Texture 
 	SDL_Texture* texture;
@@ -20,8 +22,7 @@ private:
 	//the speed which will be calculate after 
 	int Xvelocity;
 	int Yvelocity;
-	//the delay time between each time the monster shoot 
-	int bulletDelay=0;
+	
 	//the angle of the bullet  
 	double angle = 0;
 	//the real picture width and height 
@@ -46,7 +47,6 @@ private:
 	SDL_Rect heartRect;
 	SDL_Texture* heartT, *emtyHeart;
 	int fullHeart;
-	int heart;
 	int bulletNum;
 	int runSpeed;
 	double rate;

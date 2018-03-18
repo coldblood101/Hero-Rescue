@@ -1,98 +1,95 @@
-#include "enemy.h"
-#include<cmath>
-
+#include "Boss.h"
 using namespace std;
 
-enemy::enemy(int X,int Y)
+
+
+Boss::Boss(int X,int Y)
 {
-	//the necessary information of the picture 
-	col = 4;
-	row = 2;
+	//set the position
 	Xpos = X;
 	Ypos = Y;
-	//get the random monster frame and png picture
-	string monsterLink = "pic/monster/monster";
-	string tmp = " ";
-	tmp[0] = (char)(rand() % 8+ '1');
-	monsterLink += tmp;
-	monsterLink += ".png";
-	monsterType = rand() % 8;
-	//set the monster life and runSpeed
-	heart = monsterType + 1;
+	//set tthe runSpeed of the boss
+	runSpeed = 2;
+	//set the link directory
+	string fileLink = "pic/boss/boss";
+	string tmp = "  ";
+	tmp[0] = rand() % 2 + '0';
+	if (tmp[0] == '0')
+	{
+		tmp[1] = (char)(rand() % 9 + '1');
+	}
+	else
+	{
+		tmp[1] = (char)(rand() % 4 + '1');
+	}
+	fileLink += tmp;
+	fileLink += ".png";
+	heart = (1 + rand() % 10) * 10;
 	fullHeart = heart;
-	runSpeed = 3;
-	bulletNum = rand()%5+1;
-	//convernt from string to const char*
-	texture = TextureManager::LoadTexture(monsterLink.c_str());
+	//create the texture for the boss
+	bossTex = TextureManager::LoadTexture(fileLink.c_str());
 	heartT = TextureManager::LoadTexture("pic/necessary/heart.png");
 	emtyHeart = TextureManager::LoadTexture("pic/necessary/emtyHeart.png");
-	//get the real width and height of the picture 
-	SDL_QueryTexture(texture, NULL, NULL, &picWidth, &picHeight);
-	//get the frame Width and Height 
-	frameWidth = picWidth / col;
-	frameHeight = picHeight / row;
-	//get the monster size 
-	monsterWidth = frameWidth / 3;
-	monsterHeight = frameHeight / 4;
-	//define the pos and form of the monster 
+	//get the width and the height of the acctualllty picture 
+	SDL_QueryTexture(bossTex, NULL, NULL, &bossWidth, &bossHeight);
+	//divided to get the w and h of once boss animation
+	bossWidth /= 3;
+	bossHeight /= 4;
+	//set the picture cut frame 
+	scrRect.x = scrRect.y = 0;
+	scrRect.w = bossWidth;
+	scrRect.h = bossHeight;
+	/// set the pos and the width and height of the pic 
 	desRect.x = Xpos;
 	desRect.y = Ypos;
-	desRect.w = desRect.h = 50;
-	//cut start point 
-	scrRect.x = (monsterType % col)*frameWidth;
-	scrRect.y = (monsterType / col)*frameHeight;
-	scrRect.w = monsterWidth;
-	scrRect.h = monsterHeight;
-	//heart w& h
+	desRect.w = 100;
+	desRect.h = (int)((double)(100 * bossHeight) / bossWidth);
+	//
 	heartRect.w = heartRect.h = 10;
+	
+
 
 }
 
 
-enemy::~enemy()
+Boss::~Boss()
 {
 }
 
-void enemy:: Draw()
+void Boss::Draw()
 {
-	if (heart > 0){
+	if (heart > 0) {
 		//draw the monster
-		SDL_RenderCopy(Game::renderer, texture, &scrRect, &desRect);
+		SDL_RenderCopy(Game::renderer, bossTex, &scrRect, &desRect);
 		//draw the heart remain of the monster 
 		for (int i = 0; i < heart; i++)
 		{
-			heartRect.y = Ypos - 20 - Map::Ymap;
+			heartRect.y = Ypos + 10 - Map::Ymap;
 			heartRect.x = i * 10 + Xpos - Map::Xmap;
 			SDL_RenderCopy(Game::renderer, heartT, NULL, &heartRect);
 		}
 		//draw the heart has lost of the monster 
 		for (int i = heart; i < fullHeart; i++)
 		{
-			heartRect.y = Ypos - Map::Ymap - 20;
+			heartRect.y = Ypos +10- Map::Ymap ;
 			heartRect.x = Xpos - Map::Xmap + i * 10;
 			SDL_RenderCopy(Game::renderer, emtyHeart, NULL, &heartRect);
 		}
 	}
 }
-void enemy::Update()
-{
-	//the position of the monster
-	desRect.x = Xpos;
-	desRect.y = Ypos;
-	//the delay time betwen each frame when move
-	frameDelay++;
 
+void Boss::Update()
+{
+	frameDelay++;
 	if (frameDelay == 15)
 	{
 		frameDelay = 0;
-		//reset the first point of the animation
-		if (scrRect.x + monsterWidth >= ((monsterType % 4)*frameWidth + 3 * monsterWidth))
-			scrRect.x = (monsterType % 4)*frameWidth;
-		else//move to the next frame 
-			scrRect.x += monsterWidth;
+		scrRect.x += bossWidth;
+		if (scrRect.x >= 3 * bossWidth)
+			scrRect.x = 0;
 	}
-
-	scrRect.y = (monsterType / col)*frameHeight + dir*monsterHeight;
+	////
+	scrRect.y =  dir*bossHeight;
 	if (sqrt((Xpos - Player::Xpos)*(Xpos - Player::Xpos) + (Ypos - Player::Ypos)*(Ypos - Player::Ypos)) > 1000)
 	{
 		//the thing the monster do when didn't see the player 
@@ -100,7 +97,7 @@ void enemy::Update()
 	else
 	{
 		//chase the player 
-		rate = (double)runSpeed / (sqrt((Xpos - Player::Xpos+10)*(Xpos - Player::Xpos + 10) + (Ypos - Player::Ypos + 10)*(Ypos  - Player::Ypos + 10)));
+		rate = (double)runSpeed / (sqrt((Xpos - Player::Xpos + 10)*(Xpos - Player::Xpos + 10) + (Ypos - Player::Ypos + 10)*(Ypos - Player::Ypos + 10)));
 		Xvelocity = (int)ceil(rate*(Xpos - Player::Xpos));
 		Yvelocity = (int)ceil(rate*(Ypos - Player::Ypos));
 		//the direct of the monster and dir is equal to the col of the animaion in the monster frame 
@@ -126,22 +123,26 @@ void enemy::Update()
 			}
 		}
 		else
+		{
+			hitDelay++;//the delay time betwen two damage
+			if (hitDelay == 100)
 			{
-				hitDelay++;//the delay time betwen two damage
-				if (hitDelay == 100)
-				{
-					hitDelay = 0;
-					hit = false;
-				}
+				hitDelay = 0;
+				hit = false;
 			}
-		
+		}
+
 	}
 	//update the position of the monster 
 	desRect.x = Xpos - Map::Xmap;
 	desRect.y = Ypos - Map::Ymap;
+
+	////
+
+
 }
-bool enemy::bulletHit(int X, int Y)
+bool Boss::bulletHit(int X, int Y)
 {
-	return (sqrt((Xpos - X)*(Xpos - X) + (Ypos - Y)*(Ypos - Y)) <= 15);
+	return (X >= Xpos&&X <= Xpos + 100 && Y >= Ypos&&Y <= Ypos + 100);
 
 }
